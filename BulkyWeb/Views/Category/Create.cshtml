@@ -1,0 +1,43 @@
+﻿@model Category //This will create a new Object of Category and Model will be its reference
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create Category</h2>
+        </div>
+
+        <div asp-validation-summary="ModelOnly"></div> <!--This helper tag will display a summary of all the error messages that occured during the form submission-->
+        <div class="mb-3 row p-1">
+            <label asp-for="Name" class="p-0"></label>
+            <input asp-for="Name" class="form-control"/>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="DisplayOrder" class="p-0"></label>
+            <input asp-for="DisplayOrder" class="form-control" />
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span> <!--this helper tag has the error message corresponing to DisplayOrder property of Category model-->
+        </div>
+
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Category</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Category" asp-action="Index" class="btn btn-secondary border form-control">Back to list</a>
+            </div>
+        </div> 
+    </div>
+</form>
+
+    <!--Above validations(custom{i.e the ones done in the Controller using if()} or inbuit(i.e the one done through data annotations in Model Class))
+        are all server side validations i.e first the data comes server side then the error message is sent to the client in case of an error.
+
+        If we want to do the client side validation(i.e data checked as it is typed by the user), we have to use the inbuilt jquery script provied my .Net in 
+        _ValidationScriptsPartial.cshtml partial view-->
+        
+    @section Scripts{
+        @{//partial tag helper helps us to consume the patial views(by just providing the name of the partial view, it will search the Shared folder since all the partial views are stored their by Defau)
+            <partial name="_ValidationScriptsPartial"/>
+        }
+    }
+    <!--Note that we could have cousumed this partial page directly in the view but since this is a script we have to use the Script section-->
