@@ -45,6 +45,7 @@ namespace BulkyWeb.Controllers
             {
                 _db.categories.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "New category added successfully";//This is temporary data which can be used to show notifications on the next page.Once used this data will be released from the catch.
                 return RedirectToAction("Index");
             }
             return View();
@@ -78,6 +79,7 @@ namespace BulkyWeb.Controllers
             {
                 _db.categories.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Category updated successfully";
                 return RedirectToAction("Index");
             }
             return View();
@@ -92,6 +94,7 @@ namespace BulkyWeb.Controllers
             Category? categoryToDel = _db.categories.Find(id);
             _db.categories.Remove(categoryToDel);
             _db.SaveChanges();
+            TempData["success"] = "Category deleted successfully";
             return RedirectToAction("Index");
         }
     }

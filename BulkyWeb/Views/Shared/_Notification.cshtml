@@ -1,0 +1,23 @@
+﻿@if (TempData["success"] != null)
+{
+    //for toastr notifications
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    //Do not forget to add .css of toastr CDN in _Layout.cshtml
+    //<h4>@TempData["success"]</h4> //for plain text type notifications
+    
+    <script type="text/javascript">
+        toastr.success('@TempData["success"]');
+        </script>
+}
+
+@if (TempData["error"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+   
+  // <h4>@TempData["error"]</h4>
+    <script type="text/javascript">
+        toastr.success('@TempData["success"]');
+    </script>
+}
